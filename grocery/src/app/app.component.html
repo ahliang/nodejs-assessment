@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+  <h1>
+    <a class="header-nav" mat-list-item [routerLink]="'/'">{{ 'app.title' | translate }}</a>
+  </h1>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list (click)="sidenav.toggle()">
+      <a mat-list-item [routerLink]="'/grocery-list'">{{ 'app.subtitle.grocery' | translate }}</a>
+      <a mat-list-item [routerLink]="'/electronic-list'">{{ 'app.subtitle.electronic' | translate }}</a>
+      <a mat-list-item [routerLink]="'/cloth-list'">{{ 'app.subtitle.cloth' | translate }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content-min-height">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

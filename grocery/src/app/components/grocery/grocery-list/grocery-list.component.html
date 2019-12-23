@@ -1,0 +1,61 @@
+<html>
+
+<head></head>
+
+<body>
+  <form [formGroup]="groceryForm">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <input matInput placeholder="Enter brand" formControlName="brand" type="text">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <input matInput placeholder="Enter name" formControlName="name" type="text">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <button mat-button (click)="search()">{{ 'app.grocery.actions.search' | translate }}</button>
+      </div>
+    </div>
+  </form>
+  <table mat-table class="grocery-table" [dataSource]="productList" matSort matSortActive="name" matSortDirection="asc">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="upc12Barcode">
+      <th mat-header-cell *matHeaderCellDef>{{ 'app.grocery.fields.upc12Barcode' | translate }}</th>
+      <td mat-cell *matCellDef="let row"> {{row.upc12Barcode}} </td>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'app.grocery.fields.brand' | translate }}</th>
+      <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'app.grocery.fields.name' | translate }}</th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>{{ 'app.grocery.fields.action' | translate }}</th>
+      <td mat-cell *matCellDef="let row">
+        <a class="view-button" routerLink="/grocery-view/{{row.id}}">{{ 'app.grocery.actions.view' | translate }}</a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [length]="totalCount" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  <div *ngIf="totalCount === 0">{{ 'app.grocery.messages.noRecordFound' | translate }}</div>
+</body>
+
+</html>

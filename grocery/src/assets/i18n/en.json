@@ -1,0 +1,36 @@
+{
+  "app": {
+    "title": "ABC Back Office",
+    "subtitle": {
+      "grocery": "Grocery Maintenance",
+      "electronic": "Electronic Maintenance",
+      "cloth": "Clothing Maintenace"
+    },
+    "grocery": {
+      "errorMessages": {
+        "required": "This field is mandatory",
+        "numberOnly": "Only number is allowed"
+      },
+      "fields": {
+        "upc12Barcode": "UPC12 Barcode",
+        "brand": "Brand",
+        "name": "Name",
+        "action": "Action"
+      },
+      "actions": {
+        "search": "Search",
+        "view": "View",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "errorCodes": {
+        "01001": "An unexpected error occurred, please contact administrator at 0101010101. Reference Number: 11111"
+      },
+      "messages": {
+        "noRecordFound": "No Record Found",
+        "invalidProduct": "Invalid product",
+        "successfulUpdate": "Updated successfully"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<html>
+
+<head></head>
+
+<body>
+  <form [formGroup]="updateForm">
+    <div class="row">
+      <div class="col product-field">
+        <mat-form-field>
+          <input matInput placeholder="Enter brand" formControlName="brand" type="text">
+        </mat-form-field>
+        <ng-container *ngFor="let validation of validationMessage.brand">
+          <mat-error
+            *ngIf="updateForm.get('brand').hasError(validation.type) && ((updateForm.get('brand').dirty || updateForm.get('brand').touched) || (updateForm.get('brand').untouched && clickedSubmit))">
+            {{ validation.message }}
+          </mat-error>
+        </ng-container>
+      </div>
+      <div class="col product-field">
+        <mat-form-field>
+          <input matInput placeholder="Enter name" formControlName="name" type="text">
+        </mat-form-field>
+        <ng-container *ngFor="let validation of validationMessage.name">
+            <mat-error
+              *ngIf="updateForm.get('name').hasError(validation.type) && ((updateForm.get('name').dirty || updateForm.get('name').touched) || (updateForm.get('name').untouched && clickedSubmit))">
+              {{ validation.message }}
+            </mat-error>
+          </ng-container>
+      </div>
+      <div class="col product-field">
+        <mat-form-field>
+          <input matInput placeholder="Enter UPC Barcode" formControlName="upc12Barcode" type="text">
+        </mat-form-field>
+        <ng-container *ngFor="let validation of validationMessage.upc12Barcode">
+            <mat-error
+              *ngIf="updateForm.get('upc12Barcode').hasError(validation.type) && ((updateForm.get('upc12Barcode').dirty || updateForm.get('upc12Barcode').touched) || (updateForm.get('upc12Barcode').untouched && clickedSubmit))">
+              {{ validation.message }}
+            </mat-error>
+          </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col update-button">
+        <button mat-button class="button" (click)="update()">{{ 'app.grocery.actions.save' | translate }}</button>
+      </div>
+      <div class="col">
+        <button mat-button class="button" (click)="back()">{{ 'app.grocery.actions.cancel' | translate }}</button>
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>
